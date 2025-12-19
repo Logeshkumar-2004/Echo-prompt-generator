@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: echo-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
+    startCommand: gunicorn echo_project.wsgi:application
+    envVars:
+      - key: DATABASE_URL
+        scope: RUN_AND_BUILD_TIME
+      - key: GEMINI_API_KEY
+        scope: RUN_AND_BUILD_TIME
+      - key: SECRET_KEY
+        scope: RUN_AND_BUILD_TIME
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: "*.render.com,echo-backend.onrender.com"
+
+  - type: pserv
+    name: echo-db
+    plan: free
+    ipAllowList: []
+    databaseName: echodb
+    user: echouser

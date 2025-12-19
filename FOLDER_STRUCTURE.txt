@@ -1,0 +1,91 @@
+# PROJECT FOLDER STRUCTURE - ECHO FULL-STACK APPLICATION
+# Django Backend + React Frontend
+
+echo-full-stack/
+│
+├── backend/                              # Django Backend (Python)
+│   ├── manage.py                         # Django management script
+│   ├── requirements.txt                  # Python dependencies
+│   ├── .env.example                      # Environment variables template
+│   ├── .gitignore                        # Git ignore rules
+│   │
+│   ├── echo_project/                     # Main Django project folder
+│   │   ├── __init__.py
+│   │   ├── settings.py                   # Django configuration
+│   │   ├── urls.py                       # Main URL routing
+│   │   ├── asgi.py                       # ASGI config
+│   │   └── wsgi.py                       # WSGI config
+│   │
+│   ├── prompts/                          # Main Django app
+│   │   ├── migrations/                   # Database migrations
+│   │   │   └── __init__.py
+│   │   ├── __init__.py
+│   │   ├── models.py                     # Database models (Prompt, Template, SavedPrompt)
+│   │   ├── views.py                      # API views (ViewSets)
+│   │   ├── serializers.py                # DRF serializers
+│   │   ├── urls.py                       # Prompts app URL routing
+│   │   ├── services.py                   # Prompt enhancement logic (Gemini integration)
+│   │   ├── tests.py                      # Unit tests
+│   │   └── admin.py                      # Django admin configuration
+│   │
+│   └── utils/                            # Utility modules
+│       ├── __init__.py
+│       ├── gemini_client.py              # Gemini API client wrapper
+│       └── validators.py                 # Input validation utilities
+│
+├── frontend/                             # React Frontend (TypeScript)
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── tsconfig.json
+│   ├── vite.config.ts
+│   ├── tailwind.config.js
+│   ├── postcss.config.js
+│   ├── .env.example
+│   ├── .gitignore
+│   ├── index.html
+│   │
+│   ├── src/
+│   │   ├── main.tsx                      # React entry point
+│   │   ├── App.tsx                       # Main app component (updated for API calls)
+│   │   ├── index.css                     # Global styles
+│   │   ├── vite-env.d.ts
+│   │   │
+│   │   ├── components/
+│   │   │   ├── InputSection.tsx          # Prompt input form
+│   │   │   ├── ResultsView.tsx           # PTCF results display
+│   │   │   ├── TemplatePanel.tsx         # Template selector
+│   │   │   ├── AdvancedSettings.tsx      # Settings panel
+│   │   │   ├── SavedPromptsList.tsx      # Saved prompts manager
+│   │   │   └── Header.tsx                # App header
+│   │   │
+│   │   ├── services/
+│   │   │   ├── api.ts                    # Axios API client configuration
+│   │   │   ├── promptService.ts          # API calls for prompts
+│   │   │   └── templateService.ts        # API calls for templates
+│   │   │
+│   │   ├── hooks/
+│   │   │   ├── usePrompts.ts             # Custom hook for prompt logic
+│   │   │   └── useSavedPrompts.ts        # Custom hook for saved prompts
+│   │   │
+│   │   ├── types/
+│   │   │   └── index.ts                  # TypeScript interfaces
+│   │   │
+│   │   └── utils/
+│   │       ├── localStorage.ts           # LocalStorage helpers
+│   │       └── formatters.ts             # Data formatting utilities
+│   │
+│   ├── public/
+│   │   └── favicon.ico
+│   │
+│   └── dist/                             # Build output (generated)
+│
+├── docs/                                 # Documentation
+│   ├── README.md                         # Project overview
+│   ├── SETUP.md                          # Setup instructions
+│   ├── API.md                            # API documentation
+│   ├── ARCHITECTURE.md                   # System architecture
+│   └── DEPLOYMENT.md                     # Deployment guide
+│
+├── docker-compose.yml                    # Docker configuration (optional)
+├── .env                                  # Environment variables (local)
+└── .gitignore                            # Global git ignore

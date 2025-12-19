@@ -1,0 +1,15 @@
+[Unit]
+Description=gunicorn daemon for echo
+After=network.target
+
+[Service]
+User=echo
+Group=www-data
+WorkingDirectory=/home/echo/echo-full-stack/backend
+EnvironmentFile=/home/echo/echo-full-stack/backend/.env
+ExecStart=/home/echo/echo-full-stack/backend/.venv/bin/gunicorn echo_project.wsgi:application \
+  --bind unix:/run/gunicorn.sock \
+  --workers 3
+
+[Install]
+WantedBy=multi-user.target
